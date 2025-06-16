@@ -16,8 +16,8 @@ jobs:
       - name: Create config files
         run: |
           mkdir -p src/config
-          echo '${{ secrets.DEFAULT_JSON }}' > src/config/default.json
-          echo '${{ secrets.SERVICE_ACCOUNT_KEY }}' > src/config/serviceAccountKey.json
+          cp ~/default.json src/config/default.json
+          cp ~/serviceAccountKey.json src/config/serviceAccountKey.json
 
       - name: Set up Docker Compose
         run: |
