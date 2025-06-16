@@ -1,5 +1,7 @@
 const Users = require("../../models/user");
 
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
+
 // Handle Google authentication callback
 module.exports.googleCallback = async (req, res) => {
     try {
@@ -14,7 +16,7 @@ module.exports.googleCallback = async (req, res) => {
         const token = req.user.token;
         
         // Redirect to frontend with user data
-        res.redirect(`http://localhost:5173/google-callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
+        res.redirect(`${frontendUrl}/google-callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
             id: req.user._id,
             userName: req.user.userName,
             email: req.user.email,
@@ -23,7 +25,7 @@ module.exports.googleCallback = async (req, res) => {
         }))}`);
     } catch (error) {
         console.error('Google callback error:', error);
-        res.redirect(`http://localhost:5173/login?error=${encodeURIComponent('Authentication failed')}`);
+        res.redirect(`${frontendUrl}/login?error=${encodeURIComponent('Authentication failed')}`);
     }
 };
 
