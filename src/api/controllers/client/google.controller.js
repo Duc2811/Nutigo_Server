@@ -13,9 +13,7 @@ module.exports.googleCallback = async (req, res) => {
 
         // Tạo token cho user
         const token = req.user.token;
-        
-        // Redirect to frontend with user data
-        res.redirect(`${frontendUrl}/google-callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
+        res.redirect(`https://www.nutigo.id.vn/google-callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
             id: req.user._id,
             userName: req.user.userName,
             email: req.user.email,
