@@ -19,7 +19,7 @@ database.connect();
 app.use(express.json());
 
 require('dotenv').config();
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 app.use(cookieParser())
 
