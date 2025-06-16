@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  nutigo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/nutigo
+      - FRONTEND_URL=http://localhost:5173
+    volumes:
+      - .:/app
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    networks:
+      - nutigo-network
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - nutigo-network
+
+networks:
+  nutigo-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
