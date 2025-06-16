@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 //connet db
-const database = require('./Config/database')
+const database = require('./config/database')
 const session = require('express-session')
 const passport = require('./config/passport')
 
