@@ -20,6 +20,7 @@ app.use(express.json());
 
 require('dotenv').config();
 const port = process.env.PORT || 3000
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
 
 app.use(cookieParser())
 
@@ -35,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:3000'],
+    origin: [frontendUrl],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
