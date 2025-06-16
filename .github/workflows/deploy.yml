@@ -24,8 +24,3 @@ jobs:
           docker compose down
           docker compose build --no-cache
           docker compose up -d
-
-      - name: Cleanup config files
-        run: |
-          rm -f src/config/default.json
-          rm -f src/config/serviceAccountKey.json
