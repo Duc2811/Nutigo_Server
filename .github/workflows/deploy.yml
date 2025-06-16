@@ -1,0 +1,31 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create config files
+        run: |
+          mkdir -p src/config
+          echo '${{ secrets.DEFAULT_JSON }}' > src/config/default.json
+          echo '${{ secrets.SERVICE_ACCOUNT_KEY }}' > src/config/serviceAccountKey.json
+
+      - name: Set up Docker Compose
+        run: |
+          docker compose down
+          docker compose build --no-cache
+          docker compose up -d
+
+      - name: Cleanup config files
+        run: |
+          rm -f src/config/default.json
+          rm -f src/config/serviceAccountKey.json

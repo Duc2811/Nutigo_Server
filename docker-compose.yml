@@ -11,6 +11,8 @@ services:
       - NODE_ENV=development
       - MONGODB_URI=mongodb://mongodb:27017/nutigo
       - FRONTEND_URL=http://localhost:5173
+    env_file:
+      - ~/.env
     volumes:
       - .:/app
     depends_on:
