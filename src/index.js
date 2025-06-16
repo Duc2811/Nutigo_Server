@@ -22,7 +22,6 @@ require('dotenv').config();
 const port = process.env.PORT || 3000
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173'
 
-console.log(frontendUrl);
 app.use(cookieParser())
 
 app.use(bodyParser.json({ limit: '10mb' }));
