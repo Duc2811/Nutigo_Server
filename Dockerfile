@@ -2,15 +2,12 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-# Clean install dependencies
-RUN npm ci
+RUN npm install -g nodemon && npm ci
 
-# Copy source code
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"] 
+CMD ["npm", "start"]
