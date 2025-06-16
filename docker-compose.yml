@@ -15,6 +15,7 @@ services:
       - ~/.env
     volumes:
       - .:/app
+      - /app/node_modules
     depends_on:
       - mongodb
     restart: unless-stopped
