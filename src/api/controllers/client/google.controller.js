@@ -13,7 +13,6 @@ module.exports.googleCallback = async (req, res) => {
 
         // Tạo token cho user
         const token = req.user.token;
-        
         // Redirect to frontend with user data
         res.redirect(`${frontendUrl}/google-callback?token=${token}&user=${encodeURIComponent(JSON.stringify({
             id: req.user._id,
