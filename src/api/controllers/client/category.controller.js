@@ -47,7 +47,6 @@ module.exports.getAllCategory = async (req, res) => {
                 };
             })
         );
-
         return res.status(200).json({
             categories: categoryWithSubCategories,
             totalPage: paginationData.totalPage,
