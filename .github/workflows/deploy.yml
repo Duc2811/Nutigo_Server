@@ -20,6 +20,4 @@ jobs:
 
       - name: Set up Docker Compose
         run: |
-          docker compose down
           docker compose up -d --build
-          docker compose up -d
